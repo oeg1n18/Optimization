@@ -1,0 +1,47 @@
+A cafeteria in Southampton is open from 9 am to 5 pm. Staffing is done in the
+following manner: a full-time employee works 7 hours including a one-hour break
+in the middle (and is paid for his break), whilst a part-time employee works 4 hours
+consecutively. The number of employees required per time-slot is displayed in the
+following table.
+
+
+    Period  |  Number of Employees required
+    ---------------------------------------
+    9 - 10  | 6
+    10 - 11 | 5
+    11 - 12 | 7
+    12 - 13 | 8
+    13 - 14 | 8
+    14 - 15 | 7
+    15 - 16 | 5
+    16 - 17 | 6
+
+
+
+If at least 4 full-time employees must be hired, and given that a full-timer costs
+£12 per hour whereas a part-timer costs £7.5 per hour, build a linear programming
+model that will minimize the labour cost whilst preserving customer service.
+Include any other analysis that may be relevant in supporting the decision making process and comment on over staffing.
+
+
+
+SOLUTION:
+===============================================================
+
+Split the decision variables into the possible shifts
+
+    Hour    | x1 | x2 | x3 | x4 | x5 | x6 | x7 |
+    --------------------------------------------
+    9 - 10  | 1  | 1  | 1  | 0  | 0  | 0  | 0  |
+    10 - 11 | 1  | 1  | 1  | 1  | 0  | 0  | 0  |
+    11 - 12 | 1  | 1  | 1  | 1  | 1  | 0  | 0  |
+    12 - 13 | 0  | 1  | 1  | 1  | 1  | 1  | 0  |
+    13 - 14 | 1  | 0  | 0  | 1  | 1  | 1  | 1  |
+    14 - 15 | 1  | 1  | 0  | 0  | 1  | 1  | 1  |
+    15 - 16 | 1  | 1  | 0  | 0  | 0  | 1  | 1  |
+    16 - 17 | 1  | 1  | 0  | 0  | 0  | 0  | 1  |
+
+Cost for a full time shift is 12 * 8 = 96 and the cost for a PT shift is 7.5 * 4 = 30
+
+C = 96x1 + 96x2 + 30x3 + 30x4 + 30x5 + 30x6 + 30x7
+
